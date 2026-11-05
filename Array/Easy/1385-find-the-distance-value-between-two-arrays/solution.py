@@ -11,14 +11,14 @@ def isNumExist(arr2, leftNum, rightNum):
             left=mid+1
         else:
             right=mid-1
-    return False            
+    return False   
+
 class Solution:
     def findTheDistanceValue(self, arr1: list[int], arr2: list[int], d: int) -> int:
         dist = 0
         arr2.sort()
         for num in arr1:
             leftNum,rightNum = num-d,num+d
-            print(isNumExist(arr2,leftNum,rightNum))
             if( not isNumExist(arr2,leftNum,rightNum)):
                 dist+=1
         return dist        

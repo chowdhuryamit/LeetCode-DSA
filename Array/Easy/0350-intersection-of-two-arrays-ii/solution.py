@@ -6,7 +6,6 @@ def isPresent(num,nums2):
     nums2.sort()
     while(left<=right):
         mid = int(left+(right-left)/2)
-        print(mid)
         if(nums2[mid] == num):
             nums2[mid]=-1
             return True
@@ -20,7 +19,6 @@ class Solution:
         ans = []
         nums2.sort()
         for num in nums1:
-            # print(num, isPresent(num,nums2),nums2)
             if(isPresent(num,nums2)):
                 ans.append(num)
         return ans        

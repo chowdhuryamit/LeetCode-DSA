@@ -11,16 +11,17 @@ class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         if(head==None):
             return False
-        visitedNode={}
-        temp=head
-        visitedNode[temp]=True
-        temp=temp.next
-        while(temp!=None):
-            if(visitedNode.get(temp)):
+        slowPointer,fastPointer=head,head
+        while(fastPointer!=None):
+            slowPointer=slowPointer.next
+            fastPointer=fastPointer.next
+            if(fastPointer!=None):
+                fastPointer=fastPointer.next
+            if(fastPointer==None):
+                break    
+            if(slowPointer==fastPointer):
                 return True
-            else:
-                visitedNode[temp]=True
-                temp=temp.next
-        return False            
+        return False                
+
 
         

@@ -9,16 +9,30 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
-        firstList={}
+        lengthA,lengthB=0,0
         temp=headA
         while(temp!=None):
-            firstList[temp]=True
+            lengthA+=1
             temp=temp.next
         temp=headB
         while(temp!=None):
-            if(firstList.get(temp)):
-                return temp
+            lengthB+=1
+            temp=temp.next
+        tempA,tempB=headA,headB
+        if(lengthA>lengthB):
+            diff=lengthA-lengthB
+            while(diff):
+                tempA=tempA.next
+                diff-=1
+        else:
+            diff=lengthB-lengthA
+            while(diff):
+                tempB=tempB.next
+                diff-=1
+        while(tempA!=None and tempB!=None):
+            if(tempA==tempB):
+                return tempA
             else:
-                temp=temp.next
-        return None                
-        
+                tempA=tempA.next
+                tempB=tempB.next
+        return None                               

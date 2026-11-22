@@ -10,20 +10,18 @@ class Solution:
     def reverseList(self, head: ListNode | None) -> ListNode | None:
         if(head==None):
             return None
-        stack=[]
-        temp=head
-        while(temp!=None):
-            stack.append(temp)
-            temp=temp.next  
-        head=stack[-1]
-        stack.pop()
-        temp=head
-        while(stack):
-            temp.next=stack[-1]
-            stack.pop()
-            temp=temp.next
-        temp.next=None    
-        return head
-
-
+        if(head.next==None):
+            return head
+        else:
+            prev=head
+            curr=head.next
+            nxt=curr.next
+            while(curr):
+                curr.next=prev
+                prev=curr
+                curr=nxt
+                if(nxt!=None):
+                    nxt=nxt.next
+            head.next=None
+            return prev                
         

@@ -7,21 +7,17 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    def solve(self,curr,prev):
+        if(curr==None):
+            return prev
+        nxt=curr.next
+        curr.next=prev
+        prev=curr
+        curr=self.solve(nxt,prev)
+        return curr    
     def reverseList(self, head: ListNode | None) -> ListNode | None:
-        if(head==None):
-            return None
-        if(head.next==None):
-            return head
-        else:
-            prev=head
-            curr=head.next
-            nxt=curr.next
-            while(curr):
-                curr.next=prev
-                prev=curr
-                curr=nxt
-                if(nxt!=None):
-                    nxt=nxt.next
-            head.next=None
-            return prev                
+        prev=None
+        curr=head
+        newhead=self.solve(curr,prev)
+        return newhead
         
